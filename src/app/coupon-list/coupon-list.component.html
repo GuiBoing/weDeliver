@@ -1,0 +1,277 @@
+<div class="d-flex justify-content-between align-items-center">
+    <div>
+        <h3 class="m-2">Lista cupons</h3>
+    </div>
+    <div>
+        <button class="btn btn-lg btn-primary my-3 mx-1 px-3 py-2" routerLink="../coupon-add" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="ir para tela de criação de cupom" >
+            adicionar
+        </button>
+        <button class="btn btn-lg btn-secondary my-3 mx-1 px-3 py-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offCanvasConfigs" aria-controls="offCanvasConfigs" >
+            <i class="bi bi-eye"></i>
+            <i class="bi bi-info-circle ms-2"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="editar quais colunas são apresentadas"></i>
+        </button>
+
+        <!-- <button class="btn btn-lg btn-secondary my-3 mx-1 px-3 py-2" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offCanvasFilter" aria-controls="offcanvasExample">
+        <i class="bi bi-filter"></i>
+    </button> -->
+    </div>
+
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offCanvasConfigs" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+                Configurar apresentação de colunas
+            </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="btn-group flex-column" role="group" aria-label="Basic checkbox toggle button group">
+                <form>
+                    <input type="checkbox" class="btn-check p-2" [formControl]="tableConfig.get('nome')"
+                        (click)="changeTableConfig('nome')" id="btn-check-nome" autocomplete="off" />
+                    <label class="btn btn-outline-primary m-2" for="btn-check-nome">nome</label>
+                    <input type="checkbox" class="btn-check p-2" [formControl]="tableConfig.get('campanhaPertence')"
+                        (click)="changeTableConfig('campanhaPertence')" id="btn-check-campanhaPertence"
+                        autocomplete="off" />
+                    <label class="btn btn-outline-primary m-2" for="btn-check-campanhaPertence">campanhaPertence</label>
+                    <input type="checkbox" class="btn-check p-2" [formControl]="tableConfig.get('status')"
+                        (click)="changeTableConfig('status')" id="btn-check-status" autocomplete="off" />
+                    <label class="btn btn-outline-primary m-2" for="btn-check-status">status</label>
+                    <input type="checkbox" class="btn-check p-2" [formControl]="tableConfig.get('valorMinimoUso')"
+                        (click)="changeTableConfig('valorMinimoUso')" id="btn-check-valorMinimoUso"
+                        autocomplete="off" />
+                    <label class="btn btn-outline-primary m-2" for="btn-check-valorMinimoUso">valorMinimoUso</label>
+                    <input type="checkbox" class="btn-check p-2" [formControl]="tableConfig.get('tipoDesconto')"
+                        (click)="changeTableConfig('tipoDesconto')" id="btn-check-tipoDesconto" autocomplete="off" />
+                    <label class="btn btn-outline-primary m-2" for="btn-check-tipoDesconto">tipoDesconto</label>
+                    <input type="checkbox" class="btn-check p-2" [formControl]="tableConfig.get('valorDeDesconto')"
+                        (click)="changeTableConfig('valorDeDesconto')" id="btn-check-valorDeDesconto"
+                        autocomplete="off" />
+                    <label class="btn btn-outline-primary m-2" for="btn-check-valorDeDesconto">valorDeDesconto</label>
+                    <input type="checkbox" class="btn-check p-2" [formControl]="tableConfig.get('dataDeValidade')"
+                        (click)="changeTableConfig('dataDeValidade')" id="btn-check-dataDeValidade"
+                        autocomplete="off" />
+                    <label class="btn btn-outline-primary m-2" for="btn-check-dataDeValidade">dataDeValidade</label>
+                    <input type="checkbox" class="btn-check p-2" [formControl]="tableConfig.get('produtosPertencentes')"
+                        (click)="changeTableConfig('produtosPertencentes')" id="btn-check-produtosPertencentes"
+                        autocomplete="off" />
+                    <label class="btn btn-outline-primary m-2"
+                        for="btn-check-produtosPertencentes">produtosPertencentes</label>
+                    <input type="checkbox" class="btn-check p-2" [formControl]="tableConfig.get('totalLiberados')"
+                        (click)="changeTableConfig('totalLiberados')" id="btn-check-totalLiberados"
+                        autocomplete="off" />
+                    <label class="btn btn-outline-primary m-2" for="btn-check-totalLiberados">totalLiberados</label>
+                    <input type="checkbox" class="btn-check p-2" [formControl]="tableConfig.get('quantidadeDisponivel')"
+                        (click)="changeTableConfig('quantidadeDisponivel')" id="btn-check-quantidadeDisponivel"
+                        autocomplete="off" />
+                    <label class="btn btn-outline-primary m-2"
+                        for="btn-check-quantidadeDisponivel">quantidadeDisponivel</label>
+                    <input type="checkbox" class="btn-check p-2" [formControl]="tableConfig.get('quantidadeUsados')"
+                        (click)="changeTableConfig('quantidadeUsados')" id="btn-check-quantidadeUsados"
+                        autocomplete="off" />
+                    <label class="btn btn-outline-primary m-2" for="btn-check-quantidadeUsados">quantidadeUsados</label>
+                    <input type="checkbox" class="btn-check p-2" [formControl]="tableConfig.get('criadoPorUsuario')"
+                        (click)="changeTableConfig('criadoPorUsuario')" id="btn-check-criadoPorUsuario"
+                        autocomplete="off" />
+                    <label class="btn btn-outline-primary m-2" for="btn-check-criadoPorUsuario">criadoPorUsuario</label>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="offCanvasFilter" aria-labelledby="offcanvasExampleLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasExampleLabel">Filtros</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="input-group">
+                <select class="custom-select" id="inputGroupSelect04">
+                    <option *ngFor="let colunas of tableConfig.controls" >{{colunas}}</option>
+                </select>
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary" type="button" (click)="ordenarAscendente = !ordenarAscendente">{{ordenarAscendente?" Ascendente":"Descendente"}}</button>
+                </div>
+              </div>
+        </div>
+    </div> -->
+</div>
+<div class="overflower" *ngIf="!!cuponsArray">
+    <table class="table border border-especial rounded shadow table-bordered table-responsive-xl table-striped p-0">
+        <thead>
+            <tr>
+                <th scope="col" (click)="orderBy('nome')" *ngIf="tableConfig.get('nome').value">
+                    <div class="centered">
+                        <button class="btn btn-outline-light d-flex">
+                            nome<i *ngIf="orderRule.column === 'nome'" [ngClass]="
+                  orderRule.isAsc ? 'bi bi-chevron-up' : 'bi bi-chevron-down'
+                "></i>
+                        </button>
+                    </div>
+                </th>
+                <th scope="col" (click)="orderBy('campanhaPertence.nome')"
+                    *ngIf="tableConfig.get('campanhaPertence').value">
+                    <div class="centered">
+                        <button class="btn btn-outline-light d-flex">
+                            campanhaPertence<i *ngIf="orderRule.column === 'campanhaPertence.nome'" [ngClass]="
+                  orderRule.isAsc ? 'bi bi-chevron-up' : 'bi bi-chevron-down'
+                "></i>
+                        </button>
+                    </div>
+                </th>
+                <th scope="col" (click)="orderBy('status')" *ngIf="tableConfig.get('status').value">
+                    <div class="centered">
+                        <button class="btn btn-outline-light d-flex">
+                            status<i *ngIf="orderRule.column === 'status'" [ngClass]="
+                  orderRule.isAsc ? 'bi bi-chevron-up' : 'bi bi-chevron-down'
+                "></i>
+                        </button>
+                    </div>
+                </th>
+                <th scope="col" (click)="orderBy('valorMinimoUso')" *ngIf="tableConfig.get('valorMinimoUso').value">
+                    <div class="centered">
+                        <button class="btn btn-outline-light d-flex">
+                            valorMinimoUso<i *ngIf="orderRule.column === 'valorMinimoUso'" [ngClass]="
+                  orderRule.isAsc ? 'bi bi-chevron-up' : 'bi bi-chevron-down'
+                "></i>
+                        </button>
+                    </div>
+                </th>
+                <th scope="col" (click)="orderBy('tipoDesconto')" *ngIf="tableConfig.get('tipoDesconto').value">
+                    <div class="centered">
+                        <button class="btn btn-outline-light d-flex">
+                            tipoDesconto<i *ngIf="orderRule.column === 'tipoDesconto'" [ngClass]="
+                  orderRule.isAsc ? 'bi bi-chevron-up' : 'bi bi-chevron-down'
+                "></i>
+                        </button>
+                    </div>
+                </th>
+                <th scope="col" (click)="orderBy('valorDeDesconto')" *ngIf="tableConfig.get('valorDeDesconto').value">
+                    <div class="centered">
+                        <button class="btn btn-outline-light d-flex">
+                            valorDeDesconto<i *ngIf="orderRule.column === 'valorDeDesconto'" [ngClass]="
+                  orderRule.isAsc ? 'bi bi-chevron-up' : 'bi bi-chevron-down'
+                "></i>
+                        </button>
+                    </div>
+                </th>
+                <th scope="col" (click)="orderBy('dataDeValidade')" *ngIf="tableConfig.get('dataDeValidade').value">
+                    <div class="centered">
+                        <button class="btn btn-outline-light d-flex">
+                            dataDeValidade<i *ngIf="orderRule.column === 'dataDeValidade'" [ngClass]="
+                  orderRule.isAsc ? 'bi bi-chevron-up' : 'bi bi-chevron-down'
+                "></i>
+                        </button>
+                    </div>
+                </th>
+                <th scope="col" (click)="orderBy('produtosPertencentes')"
+                    *ngIf="tableConfig.get('produtosPertencentes').value">
+                    <div class="centered">
+                        <button class="btn btn-outline-light d-flex">
+                            produtosPertencentes<i *ngIf="orderRule.column === 'produtosPertencentes'" [ngClass]="
+                  orderRule.isAsc ? 'bi bi-chevron-up' : 'bi bi-chevron-down'
+                "></i>
+                        </button>
+                    </div>
+                </th>
+                <th scope="col" (click)="orderBy('totalLiberados')" *ngIf="tableConfig.get('totalLiberados').value">
+                    <div class="centered">
+                        <button class="btn btn-outline-light d-flex">
+                            totalLiberados<i *ngIf="orderRule.column === 'totalLiberados'" [ngClass]="
+                  orderRule.isAsc ? 'bi bi-chevron-up' : 'bi bi-chevron-down'
+                "></i>
+                        </button>
+                    </div>
+                </th>
+                <th scope="col" (click)="orderBy('quantidadeDisponivel')"
+                    *ngIf="tableConfig.get('quantidadeDisponivel').value">
+                    <div class="centered">
+                        <button class="btn btn-outline-light d-flex">
+                            quantidadeDisponivel<i *ngIf="orderRule.column === 'quantidadeDisponivel'" [ngClass]="
+                  orderRule.isAsc ? 'bi bi-chevron-up' : 'bi bi-chevron-down'
+                "></i>
+                        </button>
+                    </div>
+                </th>
+                <th scope="col" (click)="orderBy('quantidadeUsados')" *ngIf="tableConfig.get('quantidadeUsados').value">
+                    <div class="centered">
+                        <button class="btn btn-outline-light d-flex">
+                            quantidadeUsados<i *ngIf="orderRule.column === 'quantidadeUsados'" [ngClass]="
+                  orderRule.isAsc ? 'bi bi-chevron-up' : 'bi bi-chevron-down'
+                "></i>
+                        </button>
+                    </div>
+                </th>
+                <th scope="col" (click)="orderBy('criadoPorUsuario.nome')"
+                    *ngIf="tableConfig.get('criadoPorUsuario').value">
+                    <div class="centered">
+                        <button class="btn btn-outline-light d-flex">
+                            criadoPorUsuario<i *ngIf="orderRule.column === 'criadoPorUsuario.nome'" [ngClass]="
+                  orderRule.isAsc ? 'bi bi-chevron-up' : 'bi bi-chevron-down'
+                "></i>
+                        </button>
+                    </div>
+                </th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cupom of sorter(cuponsArray)">
+                <td *ngIf="tableConfig.get('nome').value">
+                    <span>{{ cupom?.nome || "-" }} </span>
+                </td>
+                <td *ngIf="tableConfig.get('campanhaPertence').value">
+                    <span>{{ cupom?.campanhaPertence?.nome || "-" }}</span>
+                </td>
+                <td *ngIf="tableConfig.get('status').value">
+                    <span class="pill" [ngClass]="'pill '+ cupom?.status">{{ cupom?.status || "-" }} </span>
+                </td>
+                <td *ngIf="tableConfig.get('valorMinimoUso').value">
+                    <span>{{ cupom?.valorMinimoUso | currency : "BRL" || "-" }}</span>
+                </td>
+                <td *ngIf="tableConfig.get('tipoDesconto').value">
+                    <span>{{ cupom?.tipoDesconto || "-" }}</span>
+                </td>
+                <td *ngIf="
+            tableConfig.get('valorDeDesconto').value &&
+            cupom?.tipoDesconto === 'porcentagem'
+          ">
+                    <span>{{ cupom?.valorDeDesconto | percent }} </span>
+                </td>
+                <td *ngIf="
+            tableConfig.get('valorDeDesconto').value &&
+            cupom?.tipoDesconto === 'fixo'
+          ">
+                    <span>{{ cupom?.valorDeDesconto | currency : "BRL" }} </span>
+                </td>
+                <td *ngIf="tableConfig.get('dataDeValidade').value">
+                    <span>{{ cupom?.dataDeValidade | date : "dd/MM/yyyy" || "-" }} </span>
+                </td>
+                <td *ngIf="tableConfig.get('produtosPertencentes').value">
+                    <span>{{ cupom?.produtosPertencentes | json }} </span>
+                </td>
+                <td *ngIf="tableConfig.get('totalLiberados').value">
+                    <span>{{ cupom?.totalLiberados || "-" }} </span>
+                </td>
+                <td *ngIf="tableConfig.get('quantidadeDisponivel').value">
+                    <span>{{ cupom?.quantidadeDisponivel || "-" }} </span>
+                </td>
+                <td *ngIf="tableConfig.get('quantidadeUsados').value">
+                    <span>{{ cupom?.quantidadeUsados || "-" }} </span>
+                </td>
+                <td *ngIf="tableConfig.get('criadoPorUsuario').value">
+                    <span>{{ cupom?.criadoPorUsuario?.nome || "-" }}</span>
+                </td>
+                <td>
+                    <div class="d-flex justify-content-center">
+                        <button class="botao-acao btn m-1 btn-outline-secondary" (click)="changeStatus(cupom.id)">
+                            Modificar Status <i class="bi bi-pen"></i>
+                        </button>
+                        <button class="botao-acao btn m-1 btn-outline-danger" (click)="delete(cupom.id)">
+                            excluir <i class="bi bi-trash"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

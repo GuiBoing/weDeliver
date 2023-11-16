@@ -1,0 +1,62 @@
+.table,
+thead,
+tr,
+td,
+th,
+tbody {
+    background-color: transparent;
+}
+
+thead,
+th.actions {
+    background-color: #0000004d;
+    text-align: center;
+}
+
+.actions{
+    display: flex;
+    flex-direction: row;
+}
+
+td>
+span{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.botao-acao{
+    i{
+        margin-left: 6px;
+    }
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.border-especial{
+    border-color: #0c1935 !important;
+    border-radius: 10px !important;
+}
+
+.overflower{
+    overflow: auto;
+}
+
+.centered{
+    display: grid;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.pill{
+    padding: 2.5px 5px;
+    background-color: grey;
+    color: white;
+    border-radius: 25px;
+    &.ativo{
+        background-color: #1cc88a;
+    }
+    &.desativado{
+        background-color: #e74a3b;
+    }
+}

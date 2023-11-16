@@ -1,0 +1,8 @@
+@import "../styles.scss";
+.bg-blue{
+    background-color: #0c1935;
+    color: white;
+}
+::ng-deep body{
+    background-color: hwb(222 60% 22%);
+}

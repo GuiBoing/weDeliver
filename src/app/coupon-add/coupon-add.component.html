@@ -1,0 +1,115 @@
+<div class="card-plain">
+    <form (ngSubmit)="submitForm()">
+        <div class="row">
+            <h1>Cadastro de cupons</h1>
+            <div class="col-md-1">
+                <label class="form-label" for="id">id <i class="bi bi-info-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="identificador unico no sistema"></i></label>
+                <input type="number" class="form-control" id="id" [formControl]="form.get('id')" />
+            </div>
+            <div class="col-md-2">
+                <label class="form-label" for="tagDeUso">tagDeUso <i class="bi bi-info-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="texto que deve ser inserido para utilizar cupom"></i></label>
+                <input type="text" class="form-control" id="tagDeUso" [formControl]="form.get('tagDeUso')" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label" for="nome">nome <i class="bi bi-info-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="nome para facil identificação"></i></label>
+                <input type="text" class="form-control" id="nome" [formControl]="form.get('nome')" />
+            </div>
+            <div class="col-md-3">
+                <label class="form-label" for="campanhaPertence">campanhaPertence <i class="bi bi-info-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="campanha a qual o cupom pertence"></i></label>
+                <select class="form-select" aria-label="Default select example" id="campanhaPertence"
+                    [formControl]="form.get('campanhaPertence')">
+                    <option [ngValue]="{nome:'campanha mock 0',id:6442}">campanha mock 0</option>
+                    <option [ngValue]="{nome:'campanha mock 1',id:4802}">campanha mock 1</option>
+                    <option [ngValue]="{nome:'campanha mock 2',id:6444}">campanha mock 2</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label" for="tipoDesconto">Usuario <i class="bi bi-info-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="usuario criando cupom"></i></label>
+                <select class="form-select" aria-label="Default select example" id="tipoDesconto" [formControl]="form.get('criadoPorUsuario')">
+                  <option [ngValue]="{nome:'admin',id:1}">administrador</option>
+                  <option [ngValue]="{nome:'comum',id:5}">comum</option>
+                </select>
+              </div>
+            <div class="col-md-2">
+                <label class="form-label" for="valorMinimoUso">valorMinimoUso <i class="bi bi-info-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="valor minimo para ser desconto ser aplicavel"></i></label>
+                <div class="input-group">
+                    <span class="input-group-text">R$</span>
+                    <input type="number" class="form-control" id="valorMinimoUso" [formControl]="form.get('valorMinimoUso')">
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <label class="form-label" for="tipoDesconto">Tipo de Desconto <i class="bi bi-info-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="formato que o desconto será aplicado"></i></label>
+                <select class="form-select" aria-label="Default select example" id="tipoDesconto" [formControl]="form.get('tipoDesconto')">
+                  <option value="fixo">Fixo</option>
+                  <option value="porcentagem">Porcentagem</option>
+                </select>
+              </div>
+
+            
+              
+              <div class="col-md-3">
+                <label class="form-label" for="valorDeDesconto">Valor de Desconto <i class="bi bi-info-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="quantidade do desconto que será aplicado em reais ou em porcentagem do valor de compra"></i></label>
+                <div class="input-group">
+                    <span *ngIf="form.get('tipoDesconto').value === 'fixo'" class="input-group-text">R$</span>
+                    <input type="number" class="form-control" id="valorDeDesconto" [formControl]="form.get('valorDeDesconto')">
+                    <span *ngIf="form.get('tipoDesconto').value === 'porcentagem'" class="input-group-text">%</span>
+                </div>
+              </div>
+              
+            <div class="col-md-2">
+                <label class="form-label" for="dataDeValidade">dataDeValidade <i class="bi bi-info-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="data em qual o cupom irá deixar de ser ativo"></i></label>
+                <input type="date" class="form-control" id="dataDeValidade"
+                    [formControl]="form.get('dataDeValidade')" />
+            </div>
+            <!-- <div class="col-md-3">
+                <label class="form-label" for="produtosPertencentes">produtosPertencentes <i class="bi bi-info-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="content"></i></label>
+                <select class="form-select" aria-label="Default select example" id="produtosPertencentes"
+                    [formControl]="form.get('produtosPertencentes')">
+                    <option [ngValue]="{nome:'produto mock 0',id:5333}">produto mock 0</option>
+                    <option [ngValue]="{nome:'produto mock 1',id:9242}">produto mock 1</option>
+                    <option [ngValue]="{nome:'produto mock 2',id:6585}">produto mock 2</option>
+                </select>
+            </div> -->
+            <div class="col-md-2">
+                <label class="form-label" for="totalLiberados">totalLiberados <i class="bi bi-info-circle"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="quantidade inicial de cupons para uso"></i></label>
+                <input type="number" class="form-control" id="totalLiberados"
+                    [formControl]="form.get('totalLiberados')" />
+            </div>
+
+            <div class="col-12 d-flex justify-content-end p-4">
+                <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalSucesso" *ngIf="form.valid">Salvar</button>
+                <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalFalha" *ngIf="!form.valid">Salvar</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+  <div class="modal fade" id="modalSucesso" tabindex="-1" aria-labelledby="modalSucesso" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalSucesso">Sucesso!</h1>
+        </div>
+        <div class="modal-body">
+            o cupom foi cadastrado deseja criar outro ou ir para lista de cupons?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" routerLink="../cupoms">Lista de Cupons</button>
+          <button type="button" class="btn btn-primary" (click)="refreshPage()">criar outro</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modalFalha" tabindex="-1" aria-labelledby="modalFalha" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="modalFalha">Falha </h1>
+        </div>
+        <div class="modal-body">
+            o cupom não foi cadastrado, verifique se foi inserido todas as informações corretamente
+        </div>
+      </div>
+    </div>
+  </div>

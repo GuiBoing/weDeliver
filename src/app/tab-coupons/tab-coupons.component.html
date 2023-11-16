@@ -1,0 +1,51 @@
+<!-- <div class="row g-1">
+    <div class="col-xl-6 col-lg-8 col-md-12 p-2 plain-card listagem shadow">
+        <app-coupon-list class="h-100 "></app-coupon-list>
+    </div>
+
+    <div class="col-xl-6 col-lg-4 col-md-12 row ">
+        <div class="col-xl-6 col-lg-12 col-md-6 mb-1">
+            <div class="m-2 shadow plain-card h-100 w-100">
+                <div id="chartPorCategoria"></div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-12 col-md-6 mb-1">
+            <div class="m-2 shadow plain-card h-100 w-100">
+                <div id="chartMaisUtilizado"></div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-12 col-md-6 mb-1">
+            <div class="m-2 shadow plain-card h-100 w-100">
+                <div id="chartConversaoPorCampanha"></div>
+            </div>
+        </div>
+        <div class="col-xl-6 col-lg-12 col-md-6 mb-1">
+            <div class="m-2 shadow plain-card h-100 w-100">
+                <div id="chartExpiradosAtivo"></div>
+            </div>
+        </div>
+
+    </div>
+
+</div> -->
+
+<div class="row g-1">
+    <div class="col-12 p-2 plain-card listagem shadow">
+        <app-coupon-list class="h-100 " *ngIf="this.cuponsArray"></app-coupon-list>
+    </div>
+
+    <div class="col-12 row p-0">
+        <div class="col-6 ps-0">
+            <div class="m-2 shadow plain-card h-100 w-100">
+                <div id="chartPorCategoria"></div>
+            </div>
+        </div>
+        <div class="col-6 pe-0">
+            <div class="m-2 shadow plain-card h-100 w-100">
+                <div id="chartExpiradosAtivo"></div>
+            </div>
+        </div>
+      
+    </div>
+
+</div>
